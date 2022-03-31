@@ -41,6 +41,23 @@
 		E1B835E027F6325200DAF96E /* LeagueResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B835DF27F6325200DAF96E /* LeagueResponse.swift */; };
 		E1B835E227F6326800DAF96E /* MatchesResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B835E127F6326800DAF96E /* MatchesResponse.swift */; };
 		E1B835E427F6328900DAF96E /* CsGoAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B835E327F6328900DAF96E /* CsGoAPI.swift */; };
+		E1B835E827F63A8100DAF96E /* MatchesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B835E727F63A8100DAF96E /* MatchesService.swift */; };
+		E1B835EA27F63AC000DAF96E /* RemoteMatchesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B835E927F63AC000DAF96E /* RemoteMatchesService.swift */; };
+		E1B835EC27F63B3000DAF96E /* TeamsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B835EB27F63B3000DAF96E /* TeamsService.swift */; };
+		E1B835EE27F63B7700DAF96E /* RemoteTeamsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B835ED27F63B7700DAF96E /* RemoteTeamsService.swift */; };
+		E1B835F127F63BE000DAF96E /* MatchesDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B835F027F63BE000DAF96E /* MatchesDataSource.swift */; };
+		E1B835F327F63C1400DAF96E /* RemoteMatchesDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B835F227F63C1400DAF96E /* RemoteMatchesDataSource.swift */; };
+		E1B835F627F63CA100DAF96E /* TeamsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B835F527F63CA100DAF96E /* TeamsDataSource.swift */; };
+		E1B835F827F63CCE00DAF96E /* RemoteTeamsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B835F727F63CCE00DAF96E /* RemoteTeamsDataSource.swift */; };
+		E1B835FA27F63D4000DAF96E /* RepositoryState.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B835F927F63D4000DAF96E /* RepositoryState.swift */; };
+		E1B835FD27F63D6300DAF96E /* MatchesRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B835FC27F63D6300DAF96E /* MatchesRepository.swift */; };
+		E1B835FF27F63DDD00DAF96E /* DefaultMatchesRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B835FE27F63DDD00DAF96E /* DefaultMatchesRepository.swift */; };
+		E1B8360227F63F7800DAF96E /* TeamsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B8360127F63F7800DAF96E /* TeamsRepository.swift */; };
+		E1B8360427F63FC800DAF96E /* DefaultTeamsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B8360327F63FC800DAF96E /* DefaultTeamsRepository.swift */; };
+		E1B8360627F640D200DAF96E /* MatchesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B8360527F640D200DAF96E /* MatchesViewModel.swift */; };
+		E1B8360827F6411B00DAF96E /* DefaultMatchesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B8360727F6411B00DAF96E /* DefaultMatchesViewModel.swift */; };
+		E1B8360A27F644A600DAF96E /* MatchesDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B8360927F644A600DAF96E /* MatchesDetailsViewModel.swift */; };
+		E1B8360C27F644EA00DAF96E /* DefaultMatchesDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B8360B27F644EA00DAF96E /* DefaultMatchesDetailsViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -82,6 +99,23 @@
 		E1B835DF27F6325200DAF96E /* LeagueResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeagueResponse.swift; sourceTree = "<group>"; };
 		E1B835E127F6326800DAF96E /* MatchesResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchesResponse.swift; sourceTree = "<group>"; };
 		E1B835E327F6328900DAF96E /* CsGoAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CsGoAPI.swift; sourceTree = "<group>"; };
+		E1B835E727F63A8100DAF96E /* MatchesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchesService.swift; sourceTree = "<group>"; };
+		E1B835E927F63AC000DAF96E /* RemoteMatchesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteMatchesService.swift; sourceTree = "<group>"; };
+		E1B835EB27F63B3000DAF96E /* TeamsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamsService.swift; sourceTree = "<group>"; };
+		E1B835ED27F63B7700DAF96E /* RemoteTeamsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteTeamsService.swift; sourceTree = "<group>"; };
+		E1B835F027F63BE000DAF96E /* MatchesDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchesDataSource.swift; sourceTree = "<group>"; };
+		E1B835F227F63C1400DAF96E /* RemoteMatchesDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteMatchesDataSource.swift; sourceTree = "<group>"; };
+		E1B835F527F63CA100DAF96E /* TeamsDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamsDataSource.swift; sourceTree = "<group>"; };
+		E1B835F727F63CCE00DAF96E /* RemoteTeamsDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteTeamsDataSource.swift; sourceTree = "<group>"; };
+		E1B835F927F63D4000DAF96E /* RepositoryState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryState.swift; sourceTree = "<group>"; };
+		E1B835FC27F63D6300DAF96E /* MatchesRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchesRepository.swift; sourceTree = "<group>"; };
+		E1B835FE27F63DDD00DAF96E /* DefaultMatchesRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultMatchesRepository.swift; sourceTree = "<group>"; };
+		E1B8360127F63F7800DAF96E /* TeamsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamsRepository.swift; sourceTree = "<group>"; };
+		E1B8360327F63FC800DAF96E /* DefaultTeamsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultTeamsRepository.swift; sourceTree = "<group>"; };
+		E1B8360527F640D200DAF96E /* MatchesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchesViewModel.swift; sourceTree = "<group>"; };
+		E1B8360727F6411B00DAF96E /* DefaultMatchesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultMatchesViewModel.swift; sourceTree = "<group>"; };
+		E1B8360927F644A600DAF96E /* MatchesDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchesDetailsViewModel.swift; sourceTree = "<group>"; };
+		E1B8360B27F644EA00DAF96E /* DefaultMatchesDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultMatchesDetailsViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -196,6 +230,8 @@
 		E1B8359727F61CBE00DAF96E /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				E1B8360527F640D200DAF96E /* MatchesViewModel.swift */,
+				E1B8360727F6411B00DAF96E /* DefaultMatchesViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -223,6 +259,8 @@
 		E1B8359A27F61CD200DAF96E /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				E1B8360927F644A600DAF96E /* MatchesDetailsViewModel.swift */,
+				E1B8360B27F644EA00DAF96E /* DefaultMatchesDetailsViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -333,6 +371,9 @@
 		E1B835CE27F631A800DAF96E /* Repository */ = {
 			isa = PBXGroup;
 			children = (
+				E1B8360027F63F6F00DAF96E /* Teams */,
+				E1B835FB27F63D5B00DAF96E /* Matches */,
+				E1B835F927F63D4000DAF96E /* RepositoryState.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -340,6 +381,8 @@
 		E1B835CF27F631AC00DAF96E /* DataSource */ = {
 			isa = PBXGroup;
 			children = (
+				E1B835F427F63C9800DAF96E /* Teams */,
+				E1B835EF27F63BD800DAF96E /* Matches */,
 			);
 			path = DataSource;
 			sourceTree = "<group>";
@@ -347,6 +390,8 @@
 		E1B835D027F631B000DAF96E /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				E1B835E527F63A6B00DAF96E /* Teams */,
+				E1B835E627F63A7500DAF96E /* Matches */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -386,6 +431,60 @@
 				E1B835DB27F6322700DAF96E /* OpponentResponse.swift */,
 			);
 			path = Matches;
+			sourceTree = "<group>";
+		};
+		E1B835E527F63A6B00DAF96E /* Teams */ = {
+			isa = PBXGroup;
+			children = (
+				E1B835EB27F63B3000DAF96E /* TeamsService.swift */,
+				E1B835ED27F63B7700DAF96E /* RemoteTeamsService.swift */,
+			);
+			path = Teams;
+			sourceTree = "<group>";
+		};
+		E1B835E627F63A7500DAF96E /* Matches */ = {
+			isa = PBXGroup;
+			children = (
+				E1B835E727F63A8100DAF96E /* MatchesService.swift */,
+				E1B835E927F63AC000DAF96E /* RemoteMatchesService.swift */,
+			);
+			path = Matches;
+			sourceTree = "<group>";
+		};
+		E1B835EF27F63BD800DAF96E /* Matches */ = {
+			isa = PBXGroup;
+			children = (
+				E1B835F027F63BE000DAF96E /* MatchesDataSource.swift */,
+				E1B835F227F63C1400DAF96E /* RemoteMatchesDataSource.swift */,
+			);
+			path = Matches;
+			sourceTree = "<group>";
+		};
+		E1B835F427F63C9800DAF96E /* Teams */ = {
+			isa = PBXGroup;
+			children = (
+				E1B835F527F63CA100DAF96E /* TeamsDataSource.swift */,
+				E1B835F727F63CCE00DAF96E /* RemoteTeamsDataSource.swift */,
+			);
+			path = Teams;
+			sourceTree = "<group>";
+		};
+		E1B835FB27F63D5B00DAF96E /* Matches */ = {
+			isa = PBXGroup;
+			children = (
+				E1B835FC27F63D6300DAF96E /* MatchesRepository.swift */,
+				E1B835FE27F63DDD00DAF96E /* DefaultMatchesRepository.swift */,
+			);
+			path = Matches;
+			sourceTree = "<group>";
+		};
+		E1B8360027F63F6F00DAF96E /* Teams */ = {
+			isa = PBXGroup;
+			children = (
+				E1B8360127F63F7800DAF96E /* TeamsRepository.swift */,
+				E1B8360327F63FC800DAF96E /* DefaultTeamsRepository.swift */,
+			);
+			path = Teams;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -511,17 +610,33 @@
 				E1B835BA27F6309E00DAF96E /* Observable.swift in Sources */,
 				E1B835C927F6315100DAF96E /* OpponentInfo.swift in Sources */,
 				E1B8359227F61C7600DAF96E /* AppCoordinator.swift in Sources */,
+				E1B8360827F6411B00DAF96E /* DefaultMatchesViewModel.swift in Sources */,
+				E1B8360A27F644A600DAF96E /* MatchesDetailsViewModel.swift in Sources */,
+				E1B8360227F63F7800DAF96E /* TeamsRepository.swift in Sources */,
+				E1B835F127F63BE000DAF96E /* MatchesDataSource.swift in Sources */,
 				E1B835DC27F6322700DAF96E /* OpponentResponse.swift in Sources */,
+				E1B8360427F63FC800DAF96E /* DefaultTeamsRepository.swift in Sources */,
 				E1B835D827F631F600DAF96E /* PlayersResponse.swift in Sources */,
+				E1B835F827F63CCE00DAF96E /* RemoteTeamsDataSource.swift in Sources */,
 				E14C8EDC27F61A6500AE8A0B /* AppDelegate.swift in Sources */,
+				E1B835F627F63CA100DAF96E /* TeamsDataSource.swift in Sources */,
+				E1B835EC27F63B3000DAF96E /* TeamsService.swift in Sources */,
 				E1B835BC27F630BD00DAF96E /* ViewModelBindable.swift in Sources */,
 				E1B835DA27F6320700DAF96E /* TeamsResponse.swift in Sources */,
+				E1B835EE27F63B7700DAF96E /* RemoteTeamsService.swift in Sources */,
 				E1B835AD27F6256800DAF96E /* FirstTeamTableViewCell.swift in Sources */,
 				E1B835B827F62A7500DAF96E /* MainCoordinator.swift in Sources */,
+				E1B835EA27F63AC000DAF96E /* RemoteMatchesService.swift in Sources */,
+				E1B835FF27F63DDD00DAF96E /* DefaultMatchesRepository.swift in Sources */,
 				E1B835A327F61E4800DAF96E /* MatchesTableViewCell.swift in Sources */,
+				E1B835FA27F63D4000DAF96E /* RepositoryState.swift in Sources */,
 				E1B835DE27F6323500DAF96E /* OpponentInfoResponse.swift in Sources */,
 				E1B835CB27F6315900DAF96E /* Opponent.swift in Sources */,
 				E1B835D427F631D800DAF96E /* DTOMapper.swift in Sources */,
+				E1B835E827F63A8100DAF96E /* MatchesService.swift in Sources */,
+				E1B8360627F640D200DAF96E /* MatchesViewModel.swift in Sources */,
+				E1B8360C27F644EA00DAF96E /* DefaultMatchesDetailsViewModel.swift in Sources */,
+				E1B835F327F63C1400DAF96E /* RemoteMatchesDataSource.swift in Sources */,
 				E1B835C127F6312300DAF96E /* Teams.swift in Sources */,
 				E1B835E427F6328900DAF96E /* CsGoAPI.swift in Sources */,
 				E1B835A727F622AE00DAF96E /* MatchesDetailsViewController.swift in Sources */,
@@ -529,6 +644,7 @@
 				E1B835E027F6325200DAF96E /* LeagueResponse.swift in Sources */,
 				E1B835C727F6314B00DAF96E /* League.swift in Sources */,
 				E1B835C327F6312900DAF96E /* Players.swift in Sources */,
+				E1B835FD27F63D6300DAF96E /* MatchesRepository.swift in Sources */,
 				E1B835B127F6281200DAF96E /* SecondTeamTableViewCell.swift in Sources */,
 				E14C8EDE27F61A6500AE8A0B /* SceneDelegate.swift in Sources */,
 				E1B835C527F6314500DAF96E /* Matches.swift in Sources */,

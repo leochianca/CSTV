@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MatchesDetailsViewController: UIViewController {
+class MatchesDetailsViewController: UIViewController, ViewModelBindable {
     @IBOutlet weak var leagueNameLabel: UILabel!
     @IBOutlet weak var firstTeamImageView: UIImageView!
     @IBOutlet weak var secondTeamImageView: UIImageView!
@@ -17,10 +17,15 @@ class MatchesDetailsViewController: UIViewController {
     @IBOutlet weak var firstTeamTableView: UITableView!
     @IBOutlet weak var secondTeamTableView: UITableView!
     
+    var viewModel: MatchesDetailsViewModel?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
+    func bindViewModel() {}
+    
     @IBAction func backButtonTapped(_ sender: Any) {
+        self.viewModel?.goBack()
     }
 }
