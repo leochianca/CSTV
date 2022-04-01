@@ -33,6 +33,9 @@ class FirstTeamTableViewCell: UITableViewCell {
         self.playerPictureImageView.layer.cornerRadius = 8
         self.playerPictureImageView.kf.setImage(with: URL(string: "https://media.istockphoto.com/vectors/man-avatar-profile-male-face-silhouette-or-icon-isolated-on-white-vector-id1142192548?k=20&m=1142192548&s=612x612&w=0&h=cJkeszGQom2gYCSRlJO9e5yis2NlHBrzu2B9Zr9B6TI="))
         
+        self.nicknameLabel.font = .roboto(type: .bold, size: 14)
+        self.realNameLabel.font = .roboto(type: .regular, size: 12)
+        
         self.nicknameLabel.text = "Unknown"
         self.realNameLabel.text = "Unknown"
     }

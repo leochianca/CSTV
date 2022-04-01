@@ -18,6 +18,7 @@
                 <outlet property="secondTeamTableView" destination="S0a-J9-gfV" id="2x6-Rg-hKm"/>
                 <outlet property="timeLabel" destination="oac-OL-50Y" id="GWL-ZC-ArP"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="vsLabel" destination="MZR-cj-b6H" id="9CG-JR-flm"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -133,7 +134,7 @@
                 <constraint firstItem="VYb-eq-tRn" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="52" id="rdu-Hd-t5x"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="oqh-M4-4AC" secondAttribute="bottom" id="wTu-sc-2Io"/>
             </constraints>
-            <point key="canvasLocation" x="872" y="-141"/>
+            <point key="canvasLocation" x="270" y="-181"/>
         </view>
     </objects>
     <resources>

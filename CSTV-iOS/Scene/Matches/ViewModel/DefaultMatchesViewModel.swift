@@ -27,9 +27,7 @@ class DefaultMatchesViewModel: MatchesViewModel {
     
     private func bind(to matchesRespository: MatchesRepository, teamsRepository: TeamsRepository) {
         matchesRepository.matches.addAndNotify(observer: self) { [weak self] matches in
-            var matchesSorted = matches.sorted { $0.status > $1.status }
-            matchesSorted.sort { $0.date! < $1.date! }
-            self?.matches.value = matchesSorted
+            self?.matches.value = matches
         }
         matchesRespository.state.addAndNotify(observer: self) { [weak self] state in
             self?.didLoadMatches(state: state)

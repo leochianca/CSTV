@@ -8,6 +8,7 @@
 import UIKit
 
 class MatchesDetailsViewController: UIViewController, ViewModelBindable {
+    @IBOutlet weak var vsLabel: UILabel!
     @IBOutlet weak var leagueNameLabel: UILabel!
     @IBOutlet weak var firstTeamImageView: UIImageView!
     @IBOutlet weak var secondTeamImageView: UIImageView!
@@ -64,6 +65,12 @@ class MatchesDetailsViewController: UIViewController, ViewModelBindable {
         } else {
             self.secondTeamImageView.image = UIImage(named: "noteam")
         }
+        
+        self.vsLabel.font = .roboto(type: .regular, size: 12)
+        self.timeLabel.font = .roboto(type: .bold, size: 12)
+        self.leagueNameLabel.font = .roboto(type: .medium, size: 18)
+        self.firstTeamNameLabel.font = .roboto(type: .regular, size: 10)
+        self.secondTeamNameLabel.font = .roboto(type: .regular, size: 10)
         
         self.leagueNameLabel.text = self.leagueName
         self.firstTeamNameLabel.text = self.teams[0].name

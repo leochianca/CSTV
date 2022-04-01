@@ -38,6 +38,8 @@ class DefaultMatchesRepository: MatchesRepository {
                         }
                     }
                     self?.matches.value.append(contentsOf: matchesFiltered)
+                    self?.matches.value.sort { $0.status > $1.status }
+                    self?.matches.value.sort { $0.date! < $1.date! }
                     if page == self?.totalPages {
                         self?.state.value = .loaded
                     }

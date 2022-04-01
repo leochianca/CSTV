@@ -10,7 +10,9 @@ import Kingfisher
 
 class MatchesTableViewCell: UITableViewCell {
     @IBOutlet weak var containerView: UIView!
+    @IBOutlet weak var vsLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
+    @IBOutlet weak var timeLabelView: UIView!
     @IBOutlet weak var leagueNameLabel: UILabel!
     @IBOutlet weak var leagueImageView: UIImageView!
     @IBOutlet weak var firstTeamImageView: UIImageView!
@@ -35,9 +37,15 @@ class MatchesTableViewCell: UITableViewCell {
     }
     
     func setupElements() {
-        self.timeLabel.layer.masksToBounds = true
-        self.timeLabel.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMinYCorner]
-        self.timeLabel.layer.cornerRadius = 16
+        self.vsLabel.font = .roboto(type: .regular, size: 12)
+        self.leagueNameLabel.font = .roboto(type: .regular, size: 8)
+        self.firstTeamNameLabel.font = .roboto(type: .regular, size: 10)
+        self.secondTeamNameLabel.font = .roboto(type: .regular, size: 10)
+        self.timeLabel.font = .roboto(type: .bold, size: 8)
+        
+        self.timeLabelView.layer.masksToBounds = true
+        self.timeLabelView.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMinYCorner]
+        self.timeLabelView.layer.cornerRadius = 16
         self.containerView.layer.cornerRadius = 16
     }
     

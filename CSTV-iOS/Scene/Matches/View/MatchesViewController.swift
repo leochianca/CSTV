@@ -16,6 +16,7 @@ class MatchesViewController: UIViewController, ViewModelBindable {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.setupElements()
         self.setupTableView()
         self.setupRefresh()
     }
@@ -34,6 +35,10 @@ class MatchesViewController: UIViewController, ViewModelBindable {
         self.tableView.register(UINib(nibName: "MatchesTableViewCell", bundle: nil), forCellReuseIdentifier: "matchesCell")
         self.tableView.delegate = self
         self.tableView.dataSource = self
+    }
+    
+    func setupElements() {
+        self.matchesLabel.font = .roboto(type: .medium, size: 32)
     }
     
     func stopLoading(stop: Bool) {

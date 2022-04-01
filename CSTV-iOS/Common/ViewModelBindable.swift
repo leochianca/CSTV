@@ -23,10 +23,3 @@ extension ViewModelBindable where Self: UIViewController {
         self.bindViewModel()
     }
 }
-
-extension ViewModelBindable where Self: UITableViewCell {
-    func bind(to model: Self.ViewModelType) {
-        self.viewModel = viewModel
-        self.bindViewModel()
-    }
-}
