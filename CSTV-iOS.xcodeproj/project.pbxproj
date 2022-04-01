@@ -12,6 +12,7 @@
 		E14C8EDE27F61A6500AE8A0B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14C8EDD27F61A6500AE8A0B /* SceneDelegate.swift */; };
 		E14C8EE527F61A6600AE8A0B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E14C8EE427F61A6600AE8A0B /* Assets.xcassets */; };
 		E14C8EE827F61A6600AE8A0B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E14C8EE627F61A6600AE8A0B /* LaunchScreen.storyboard */; };
+		E1809A7927F76B21005552CC /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1809A7827F76B21005552CC /* DateExtension.swift */; };
 		E1B8359227F61C7600DAF96E /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B8359127F61C7600DAF96E /* AppCoordinator.swift */; };
 		E1B8359E27F61D2300DAF96E /* MatchesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B8359C27F61D2300DAF96E /* MatchesViewController.swift */; };
 		E1B8359F27F61D2300DAF96E /* MatchesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1B8359D27F61D2300DAF96E /* MatchesViewController.xib */; };
@@ -84,6 +85,7 @@
 		E14C8EE427F61A6600AE8A0B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E14C8EE727F61A6600AE8A0B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E14C8EE927F61A6600AE8A0B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E1809A7827F76B21005552CC /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 		E1B8359127F61C7600DAF96E /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		E1B8359C27F61D2300DAF96E /* MatchesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchesViewController.swift; sourceTree = "<group>"; };
 		E1B8359D27F61D2300DAF96E /* MatchesViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MatchesViewController.xib; sourceTree = "<group>"; };
@@ -296,6 +298,7 @@
 		E1B8359B27F61CE300DAF96E /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				E1B8360D27F68C6300DAF96E /* CustomFonts */,
 				E14C8EE427F61A6600AE8A0B /* Assets.xcassets */,
 			);
 			path = Resource;
@@ -331,8 +334,7 @@
 		E1B835B327F629DA00DAF96E /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				E1B8362927F68CE800DAF96E /* Extension */,
-				E1B8360D27F68C6300DAF96E /* CustomFonts */,
+				E1B8362927F68CE800DAF96E /* Extensions */,
 				E1B835B427F629E400DAF96E /* Coordinator */,
 				E1B835B927F6309E00DAF96E /* Observable.swift */,
 				E1B835BB27F630BD00DAF96E /* ViewModelBindable.swift */,
@@ -545,12 +547,13 @@
 			path = Roboto;
 			sourceTree = "<group>";
 		};
-		E1B8362927F68CE800DAF96E /* Extension */ = {
+		E1B8362927F68CE800DAF96E /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
 				E1B8362A27F68CFB00DAF96E /* FontExtension.swift */,
+				E1809A7827F76B21005552CC /* DateExtension.swift */,
 			);
-			path = Extension;
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -716,6 +719,7 @@
 				E1B8360627F640D200DAF96E /* MatchesViewModel.swift in Sources */,
 				E1B8360C27F644EA00DAF96E /* DefaultMatchesDetailsViewModel.swift in Sources */,
 				E1B835F327F63C1400DAF96E /* RemoteMatchesDataSource.swift in Sources */,
+				E1809A7927F76B21005552CC /* DateExtension.swift in Sources */,
 				E1B835C127F6312300DAF96E /* Teams.swift in Sources */,
 				E1B835E427F6328900DAF96E /* CsGoAPI.swift in Sources */,
 				E1B835A727F622AE00DAF96E /* MatchesDetailsViewController.swift in Sources */,

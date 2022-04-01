@@ -65,24 +65,8 @@ class DefaultMatchesViewModel: MatchesViewModel {
         if match.status == "running" {
             time = "AGORA"
         } else {
-            let dateFormatter = DateFormatter()
-            dateFormatter.timeZone = .autoupdatingCurrent
-            dateFormatter.locale = .autoupdatingCurrent
-            let calendar = Calendar.current
-            let matchDate = calendar.startOfDay(for: match.date!)
-            let currentDate = calendar.startOfDay(for: Date())
-            let days = calendar.dateComponents([.day], from: currentDate, to: matchDate).day
-            switch days {
-            case 0:
-                dateFormatter.dateFormat = "HH:mm"
-                time = "Hoje, \(dateFormatter.string(from: match.date!))"
-            case 1:
-                dateFormatter.dateFormat = "HH:mm"
-                time = "Amanhã, \(dateFormatter.string(from: match.date!))"
-            default:
-                dateFormatter.dateFormat = "dd/MM, HH:mm"
-                time = dateFormatter.string(from: match.date!)
-            }
+            guard let matchDate = match.date else { return }
+            time = DateFormatter.dateString(initialDate: Date(), endDate: matchDate)
         }
         self.coordinator?.goToDetails(teams: teams, leagueName: match.league.name, time: time)
     }

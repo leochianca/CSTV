@@ -87,6 +87,14 @@
                                     </label>
                                 </subviews>
                             </stackView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KR7-CB-R4b">
+                                <rect key="frame" x="0.0" y="143" width="312" height="1"/>
+                                <color key="backgroundColor" white="1" alpha="0.19766659768211919" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="eWX-x7-HJM"/>
+                                    <constraint firstAttribute="width" constant="312" id="hfc-F0-avn"/>
+                                </constraints>
+                            </view>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="JJ8-3i-loc">
                                 <rect key="frame" x="15" y="152" width="76" height="16"/>
                                 <subviews>
@@ -111,9 +119,11 @@
                         <color key="backgroundColor" red="0.1529411765" green="0.14901960780000001" blue="0.22352941179999999" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="176" id="2eu-cC-Uxa"/>
+                            <constraint firstItem="KR7-CB-R4b" firstAttribute="leading" secondItem="YpJ-Hy-Tmf" secondAttribute="leading" id="4Xu-fd-hu6"/>
                             <constraint firstAttribute="width" constant="312" id="5lv-Py-qVz"/>
                             <constraint firstAttribute="trailing" secondItem="VDr-7f-mhf" secondAttribute="trailing" constant="84" id="7SQ-Nv-Cwx"/>
                             <constraint firstAttribute="bottom" secondItem="JJ8-3i-loc" secondAttribute="bottom" constant="8" id="8kg-PX-V55"/>
+                            <constraint firstAttribute="trailing" secondItem="KR7-CB-R4b" secondAttribute="trailing" id="BvV-Aa-zDj"/>
                             <constraint firstItem="aK0-6a-6eV" firstAttribute="centerX" secondItem="YpJ-Hy-Tmf" secondAttribute="centerX" id="DAJ-Vx-PkT"/>
                             <constraint firstItem="GoH-Te-32O" firstAttribute="top" secondItem="YpJ-Hy-Tmf" secondAttribute="top" id="Eso-lB-0KC"/>
                             <constraint firstItem="XDJ-t1-wPH" firstAttribute="centerX" secondItem="FPd-Bm-TzK" secondAttribute="centerX" id="O3I-it-Hmm"/>
@@ -121,6 +131,7 @@
                             <constraint firstItem="VDr-7f-mhf" firstAttribute="top" secondItem="aK0-6a-6eV" secondAttribute="bottom" constant="10" id="dxp-ks-F3b"/>
                             <constraint firstAttribute="trailing" relation="lessThanOrEqual" secondItem="JJ8-3i-loc" secondAttribute="trailing" constant="221" id="gxZ-0p-4bM"/>
                             <constraint firstAttribute="trailing" secondItem="GoH-Te-32O" secondAttribute="trailing" id="hdp-eO-Ob2"/>
+                            <constraint firstItem="JJ8-3i-loc" firstAttribute="top" secondItem="KR7-CB-R4b" secondAttribute="bottom" constant="8" id="iA3-ze-HMN"/>
                             <constraint firstItem="VDr-7f-mhf" firstAttribute="leading" secondItem="YpJ-Hy-Tmf" secondAttribute="leading" constant="83" id="kgM-aA-vVV"/>
                             <constraint firstItem="dTP-qv-Rpj" firstAttribute="centerX" secondItem="SDP-X5-TcB" secondAttribute="centerX" id="uwv-4M-COJ"/>
                             <constraint firstItem="aK0-6a-6eV" firstAttribute="top" secondItem="YpJ-Hy-Tmf" secondAttribute="top" constant="33" id="wAu-YN-reK"/>
@@ -149,7 +160,7 @@
                 <outlet property="timeLabelView" destination="GoH-Te-32O" id="ANY-W9-S9j"/>
                 <outlet property="vsLabel" destination="Xd3-cp-se2" id="2hW-hS-E3l"/>
             </connections>
-            <point key="canvasLocation" x="1201" y="-132"/>
+            <point key="canvasLocation" x="1090" y="-140"/>
         </tableViewCell>
     </objects>
 </document>

@@ -50,23 +50,8 @@ class MatchesTableViewCell: UITableViewCell {
     }
     
     func setupDate(date: Date) {
-        let dateFormatter = DateFormatter()
-        dateFormatter.timeZone = .autoupdatingCurrent
-        dateFormatter.locale = .autoupdatingCurrent
-        let matchDate = Calendar.current.startOfDay(for: date)
-        let currentDate = Calendar.current.startOfDay(for: Date())
-        let days = Calendar.current.dateComponents([.day], from: currentDate, to: matchDate)
-        switch days.day {
-        case 0:
-            dateFormatter.dateFormat = "HH:mm"
-            self.timeLabel.text = "Hoje, \(dateFormatter.string(from: date))"
-        case 1:
-            dateFormatter.dateFormat = "HH:mm"
-            self.timeLabel.text = "Amanhã, \(dateFormatter.string(from: date))"
-        default:
-            dateFormatter.dateFormat = "dd/MM HH:mm"
-            self.timeLabel.text = dateFormatter.string(from: date)
-        }
+        let dateString = DateFormatter.dateString(initialDate: Date(), endDate: date)
+        self.timeLabel.text = dateString
     }
     
     func setupCell(match: Matches) {
