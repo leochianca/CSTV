@@ -49,20 +49,35 @@ class MatchesTableViewCell: UITableViewCell {
         self.containerView.layer.cornerRadius = 16
     }
     
+    func setupDate(date: Date) {
+        let dateFormatter = DateFormatter()
+        dateFormatter.timeZone = .autoupdatingCurrent
+        dateFormatter.locale = .autoupdatingCurrent
+        let matchDate = Calendar.current.startOfDay(for: date)
+        let currentDate = Calendar.current.startOfDay(for: Date())
+        let days = Calendar.current.dateComponents([.day], from: currentDate, to: matchDate)
+        switch days.day {
+        case 0:
+            dateFormatter.dateFormat = "HH:mm"
+            self.timeLabel.text = "Hoje, \(dateFormatter.string(from: date))"
+        case 1:
+            dateFormatter.dateFormat = "HH:mm"
+            self.timeLabel.text = "Amanhã, \(dateFormatter.string(from: date))"
+        default:
+            dateFormatter.dateFormat = "dd/MM HH:mm"
+            self.timeLabel.text = dateFormatter.string(from: date)
+        }
+    }
+    
     func setupCell(match: Matches) {
-        let firstTeam = match.opponents[0].opponent
-        let secondTeam = match.opponents[1].opponent
-        
         if match.status == "running" {
             self.timeLabel.text = "AGORA"
-        } else {
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "dd.MM HH:mm"
-            dateFormatter.timeZone = .autoupdatingCurrent
-            dateFormatter.locale = .autoupdatingCurrent
-            let time = dateFormatter.string(from: match.date ?? Date())
-            self.timeLabel.text = time
+        } else if let date = match.date {
+            self.setupDate(date: date)
         }
+        
+        let firstTeam = match.opponents[0].opponent
+        let secondTeam = match.opponents[1].opponent
         
         self.leagueNameLabel.text = match.league.name
         self.leagueImageView.kf.setImage(with: match.league.imageUrl)
