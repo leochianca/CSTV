@@ -9,7 +9,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="200" id="KGk-i7-Jjw" customClass="MatchesTableViewCell" customModule="CSTV_iOS" customModuleProvider="target">
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="matchesCell" rowHeight="200" id="KGk-i7-Jjw" customClass="MatchesTableViewCell" customModule="CSTV_iOS" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="360" height="200"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
@@ -26,7 +26,7 @@
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="43" id="1iM-Mv-8Hi"/>
                                     <constraint firstAttribute="height" constant="25" id="j7p-vb-NOD"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="8"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="8"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -45,7 +45,7 @@
                                         <constraints>
                                             <constraint firstAttribute="width" constant="13" id="aOw-ZJ-6aS"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="0.5" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -110,7 +110,7 @@
                             <constraint firstItem="XDJ-t1-wPH" firstAttribute="centerX" secondItem="FPd-Bm-TzK" secondAttribute="centerX" id="O3I-it-Hmm"/>
                             <constraint firstItem="JJ8-3i-loc" firstAttribute="leading" secondItem="YpJ-Hy-Tmf" secondAttribute="leading" constant="15" id="XnD-5m-gII"/>
                             <constraint firstItem="VDr-7f-mhf" firstAttribute="top" secondItem="aK0-6a-6eV" secondAttribute="bottom" constant="10" id="dxp-ks-F3b"/>
-                            <constraint firstAttribute="trailing" secondItem="JJ8-3i-loc" secondAttribute="trailing" constant="221" id="gxZ-0p-4bM"/>
+                            <constraint firstAttribute="trailing" relation="lessThanOrEqual" secondItem="JJ8-3i-loc" secondAttribute="trailing" constant="221" id="gxZ-0p-4bM"/>
                             <constraint firstItem="VDr-7f-mhf" firstAttribute="leading" secondItem="YpJ-Hy-Tmf" secondAttribute="leading" constant="83" id="kgM-aA-vVV"/>
                             <constraint firstAttribute="trailing" secondItem="bD7-XD-6ah" secondAttribute="trailing" id="lbQ-hH-45C"/>
                             <constraint firstItem="dTP-qv-Rpj" firstAttribute="centerX" secondItem="SDP-X5-TcB" secondAttribute="centerX" id="uwv-4M-COJ"/>
@@ -129,6 +129,7 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="containerView" destination="YpJ-Hy-Tmf" id="UwS-h6-Zih"/>
                 <outlet property="firstTeamImageView" destination="FPd-Bm-TzK" id="dXV-dw-YaS"/>
                 <outlet property="firstTeamNameLabel" destination="XDJ-t1-wPH" id="wjf-k4-PMV"/>
                 <outlet property="leagueImageView" destination="sSC-sI-eZX" id="tjv-RN-UqX"/>

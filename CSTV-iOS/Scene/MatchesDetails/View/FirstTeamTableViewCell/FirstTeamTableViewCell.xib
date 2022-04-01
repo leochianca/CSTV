@@ -76,7 +76,7 @@
                 <outlet property="playerPictureImageView" destination="jUg-sH-gf5" id="Tck-MP-0sY"/>
                 <outlet property="realNameLabel" destination="Ipg-ih-7d1" id="ylX-QL-XCB"/>
             </connections>
-            <point key="canvasLocation" x="-229" y="41"/>
+            <point key="canvasLocation" x="-810" y="9"/>
         </tableViewCell>
     </objects>
 </document>

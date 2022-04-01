@@ -16,11 +16,59 @@ class MatchesViewController: UIViewController, ViewModelBindable {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.setupTableView()
+        self.setupRefresh()
     }
     
     func bindViewModel() {
-        self.viewModel?.matches.addAndNotify(observer: self, observerBlock: { matches in
-            print("MATCHES: \(matches)")
+        self.viewModel?.matches.addAndNotify(observer: self, observerBlock: { [weak self] _ in
+            self?.tableView.reloadData()
+            self?.tableView.refreshControl?.endRefreshing()
         })
+        self.viewModel?.finishLoading.addAndNotify(observer: self, observerBlock: { [weak self] stop in
+            self?.stopLoading(stop: stop)
+        })
+    }
+    
+    func setupTableView() {
+        self.tableView.register(UINib(nibName: "MatchesTableViewCell", bundle: nil), forCellReuseIdentifier: "matchesCell")
+        self.tableView.delegate = self
+        self.tableView.dataSource = self
+    }
+    
+    func stopLoading(stop: Bool) {
+        if stop {
+            self.activityIndicator.stopAnimating()
+        }
+    }
+    
+    func setupRefresh() {
+        self.tableView.refreshControl = UIRefreshControl()
+        self.tableView.refreshControl?.addTarget(self, action: #selector(self.refresh), for: .valueChanged)
+    }
+    
+    @objc private func refresh() {
+        self.viewModel?.refreshMatches()
+    }
+}
+
+extension MatchesViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.viewModel?.matches.value.count ?? 0
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let match = self.viewModel?.matches.value[indexPath.row] else { return UITableViewCell() }
+        
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "matchesCell", for: indexPath) as? MatchesTableViewCell {
+            cell.setupCell(match: match)
+            return cell
+        }
+        return UITableViewCell()
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let match = self.viewModel?.matches.value[indexPath.row] else { return }
+        self.viewModel?.goToDetails(match: match)
     }
 }

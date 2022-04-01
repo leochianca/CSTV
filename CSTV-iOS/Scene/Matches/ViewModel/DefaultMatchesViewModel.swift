@@ -27,7 +27,8 @@ class DefaultMatchesViewModel: MatchesViewModel {
     
     private func bind(to matchesRespository: MatchesRepository, teamsRepository: TeamsRepository) {
         matchesRepository.matches.addAndNotify(observer: self) { [weak self] matches in
-            let matchesSorted = matches.sorted { $0.status > $1.status }
+            var matchesSorted = matches.sorted { $0.status > $1.status }
+            matchesSorted.sort { $0.date! < $1.date! }
             self?.matches.value = matchesSorted
         }
         matchesRespository.state.addAndNotify(observer: self) { [weak self] state in
@@ -67,12 +68,24 @@ class DefaultMatchesViewModel: MatchesViewModel {
             time = "AGORA"
         } else {
             let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "dd/MM, HH:mm"
             dateFormatter.timeZone = .autoupdatingCurrent
             dateFormatter.locale = .autoupdatingCurrent
-            time = dateFormatter.string(from: match.date ?? Date())
+            let calendar = Calendar.current
+            let matchDate = calendar.startOfDay(for: match.date!)
+            let currentDate = calendar.startOfDay(for: Date())
+            let days = calendar.dateComponents([.day], from: currentDate, to: matchDate).day
+            switch days {
+            case 0:
+                dateFormatter.dateFormat = "HH:mm"
+                time = "Hoje, \(dateFormatter.string(from: match.date!))"
+            case 1:
+                dateFormatter.dateFormat = "HH:mm"
+                time = "Amanhã, \(dateFormatter.string(from: match.date!))"
+            default:
+                dateFormatter.dateFormat = "dd/MM, HH:mm"
+                time = dateFormatter.string(from: match.date!)
+            }
         }
-        
         self.coordinator?.goToDetails(teams: teams, leagueName: match.league.name, time: time)
     }
 }
