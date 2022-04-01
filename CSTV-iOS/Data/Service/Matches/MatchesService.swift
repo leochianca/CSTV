@@ -11,5 +11,6 @@ struct MatchesErrorMessage: Codable, Error {
 }
 
 protocol MatchesService {
-    func getAllMessages(page: Int, completion: @escaping (_ result: Result<[MatchesResponse], MatchesErrorMessage>) -> Void)
+    func getRunningMatches(completion: @escaping (_ result: Result<[MatchesResponse], MatchesErrorMessage>) -> Void)
+    func getUpcomingMatches(page: Int, completion: @escaping (_ result: Result<[MatchesResponse], MatchesErrorMessage>) -> Void)
 }

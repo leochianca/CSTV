@@ -46,11 +46,18 @@ class DefaultMatchesViewModel: MatchesViewModel {
     }
     
     func getMatches() {
-        self.matchesRepository.getMatches()
+        self.matchesRepository.getRunningMatches()
+        self.matchesRepository.getUpcomingMatches()
     }
     
     func refreshMatches() {
         self.matchesRepository.refresh()
+    }
+    
+    func pagination(indexPath: IndexPath) {
+        if indexPath.row == self.matches.value.count - 1 {
+            self.matchesRepository.getUpcomingMatches()
+        }
     }
     
     func goToDetails(match: Matches) {

@@ -72,6 +72,10 @@ extension MatchesViewController: UITableViewDelegate, UITableViewDataSource {
         return UITableViewCell()
     }
     
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        self.viewModel?.pagination(indexPath: indexPath)
+    }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let match = self.viewModel?.matches.value[indexPath.row] else { return }
         self.viewModel?.goToDetails(match: match)

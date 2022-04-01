@@ -10,6 +10,7 @@ import Foundation
 protocol MatchesViewModelInput {
     func getMatches()
     func refreshMatches()
+    func pagination(indexPath: IndexPath)
     func goToDetails(match: Matches)
 }
 

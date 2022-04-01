@@ -9,7 +9,8 @@ import Foundation
 
 class DefaultMatchesRepository: MatchesRepository {
     private let dataSource: MatchesDataSource
-    private let totalPages: Int = 20 // Arbitrary max number of matches pages
+    private let totalPages: Int = 20 // Arbitrary max number of matches pages (API doesn't specify)
+    private var page: Int = 0
     let matches: Observable<[Matches]> = .init([])
     let state: Observable<MatchesRepositoryState> = .init(.idle)
     
@@ -18,34 +19,48 @@ class DefaultMatchesRepository: MatchesRepository {
     }
     
     func refresh() {
+        self.page = 0
         self.matches.value.removeAll()
-        self.getMatches()
+        self.getRunningMatches()
+        self.getUpcomingMatches()
     }
     
-    func getMatches() {
-        self.state.value = .loading
-        for page in 1...self.totalPages {
-            self.dataSource.getAllMatches(page: page) { [weak self] result in
-                switch result {
-                case .success(let matches):
-                    // Filtering unfinished matches
-                    var matchesFiltered: [Matches] = []
-                    for match in matches {
-                        if match.status == "running" || match.status == "not_started" {
-                            if match.opponents.count == 2 {
-                                matchesFiltered.append(match)
-                            }
-                        }
+    func getRunningMatches() {
+        self.dataSource.getRunningMatches { [weak self] result in
+            switch result {
+            case .success(let runningMatches):
+                var runningMatchesFiltered: [Matches] = []
+                for match in runningMatches {
+                    if match.opponents.count == 2 {
+                        runningMatchesFiltered.append(match)
                     }
-                    self?.matches.value.append(contentsOf: matchesFiltered)
-                    self?.matches.value.sort { $0.status > $1.status }
-                    self?.matches.value.sort { $0.date! < $1.date! }
-                    if page == self?.totalPages {
-                        self?.state.value = .loaded
-                    }
-                case .failure(let error):
-                    self?.state.value = .error(.generic(errorMessage: error.message))
                 }
+                self?.matches.value = runningMatchesFiltered
+            case .failure(let error):
+                self?.state.value = .error(.generic(errorMessage: error.message))
+            }
+        }
+    }
+    
+    func getUpcomingMatches() {
+        guard self.page < self.totalPages, self.state.value != .loading else { return }
+        
+        self.state.value = .loading
+        self.page += 1
+        
+        self.dataSource.getUpcomingMatches(page: self.page) { [weak self] result in
+            switch result {
+            case .success(let upComingMatches):
+                var upComingMatchesFiltered: [Matches] = []
+                for match in upComingMatches {
+                    if match.opponents.count == 2 {
+                        upComingMatchesFiltered.append(match)
+                    }
+                }
+                self?.matches.value.append(contentsOf: upComingMatchesFiltered)
+                self?.state.value = .loaded
+            case .failure(let error):
+                self?.state.value = .error(.generic(errorMessage: error.message))
             }
         }
     }

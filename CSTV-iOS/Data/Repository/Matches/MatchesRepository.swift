@@ -17,6 +17,7 @@ protocol MatchesRepository {
     var matches: Observable<[Matches]> { get }
     var state: Observable<MatchesRepositoryState> { get }
     
-    func getMatches()
+    func getRunningMatches()
+    func getUpcomingMatches()
     func refresh()
 }

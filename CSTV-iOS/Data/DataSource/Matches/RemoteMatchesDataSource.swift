@@ -14,8 +14,20 @@ class RemoteMatchesDataSource: MatchesDataSource {
         self.service = service
     }
     
-    func getAllMatches(page: Int, completion: @escaping (Result<[Matches], MatchesErrorMessage>) -> Void) {
-        self.service.getAllMessages(page: page) { result in
+    func getRunningMatches(completion: @escaping (Result<[Matches], MatchesErrorMessage>) -> Void) {
+        self.service.getRunningMatches { result in
+            switch result {
+            case .success(let matchesResponse):
+                let matchesMapped = matchesResponse.map { MatchesResponseMapper.map($0) }
+                completion(.success(matchesMapped))
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
+    }
+    
+    func getUpcomingMatches(page: Int, completion: @escaping (Result<[Matches], MatchesErrorMessage>) -> Void) {
+        self.service.getUpcomingMatches(page: page) { result in
             switch result {
             case .success(let matchesResponse):
                 let matchesMapped = matchesResponse.map { MatchesResponseMapper.map($0) }

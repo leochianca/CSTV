@@ -9,7 +9,8 @@ import Foundation
 import Alamofire
 
 enum CsGoAPI {
-    case getAllMatches(page: Int)
+    case getRunningMatches
+    case getUpcomingMatches(page: Int)
     case getAllTeams(page: Int)
 }
 
@@ -20,23 +21,27 @@ extension CsGoAPI {
 
     var method: HTTPMethod {
         switch self {
-        case .getAllMatches, .getAllTeams:
+        case .getRunningMatches, .getUpcomingMatches(_), .getAllTeams(_):
             return .get
         }
     }
 
     var path: String {
         switch self {
-        case .getAllMatches:
-            return "/csgo/matches"
+        case .getRunningMatches:
+            return "/csgo/matches/running"
+        case .getUpcomingMatches(_):
+            return "/csgo/matches/upcoming"
         case .getAllTeams:
             return "/csgo/teams"
         }
     }
     
-    var parameters: String {
+    var parameters: String? {
         switch self {
-        case .getAllMatches(let page), .getAllTeams(let page):
+        case .getRunningMatches:
+            return nil
+        case .getAllTeams(let page), .getUpcomingMatches(let page):
             return String(page)
         }
     }
