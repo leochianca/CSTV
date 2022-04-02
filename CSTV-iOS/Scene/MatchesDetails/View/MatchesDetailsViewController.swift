@@ -22,6 +22,8 @@ class MatchesDetailsViewController: UIViewController, ViewModelBindable {
     @IBOutlet weak var teamsNameStackView: UIStackView!
     
     var viewModel: MatchesDetailsViewModel?
+    var firstCellIndex: Int = 0
+    var secondCellIndex: Int = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,8 +56,8 @@ class MatchesDetailsViewController: UIViewController, ViewModelBindable {
     
     func setupElements() {
         self.setupFont()
-        guard let match = self.viewModel?.match.value else { return }
         
+        guard let match = self.viewModel?.match.value else { return }
         if match.status == "running" {
             self.timeLabel.text = "AGORA"
         } else {
@@ -121,13 +123,15 @@ extension MatchesDetailsViewController: UITableViewDelegate, UITableViewDataSour
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let teams = self.viewModel?.teams.value else { return UITableViewCell() }
         if tableView == self.firstTeamTableView, let cell = tableView.dequeueReusableCell(withIdentifier: "firstTeamCell", for: indexPath) as? FirstTeamTableViewCell {
-            if teams[0].players.count >= indexPath.row {
-                cell.setupCell(team: teams[0], index: indexPath.row)
+            if teams[0].players.count >= self.firstCellIndex + 1 {
+                cell.setupCell(team: teams[0], index: self.firstCellIndex)
+                self.firstCellIndex += 1
             }
             return cell
         } else if let cell = tableView.dequeueReusableCell(withIdentifier: "secondTeamCell", for: indexPath) as? SecondTeamTableViewCell {
-            if teams[1].players.count >= indexPath.row {
-                cell.setupCell(team: teams[1], index: indexPath.row)
+            if teams[1].players.count >= self.secondCellIndex + 1 {
+                cell.setupCell(team: teams[1], index: self.secondCellIndex)
+                self.secondCellIndex += 1
             }
             return cell
         }

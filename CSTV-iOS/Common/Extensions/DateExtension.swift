@@ -11,9 +11,9 @@ extension DateFormatter {
     private static func format(format: String) -> DateFormatter {
         let formatter = DateFormatter()
         formatter.timeZone = .autoupdatingCurrent
-        formatter.locale = .autoupdatingCurrent
+        formatter.locale = Locale(identifier: Locale.preferredLanguages[0])
         formatter.dateFormat = format
-        
+
         return formatter
     }
     
@@ -26,6 +26,10 @@ extension DateFormatter {
         case 1:
             let dateFormatter = self.format(format: "HH:mm")
             return "Amanhã, \(dateFormatter.string(from: endDate))"
+        case 2, 3, 4, 5, 6:
+            let dateFormatter = self.format(format: "E, HH:mm")
+            let time = dateFormatter.string(from: endDate).replacingOccurrences(of: ".", with: "")
+            return time.prefix(1).uppercased() + time.lowercased().dropFirst()
         default:
             let dateFormatter = self.format(format: "dd/MM HH:mm")
             return dateFormatter.string(from: endDate)

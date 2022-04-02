@@ -31,13 +31,13 @@ class SecondTeamTableViewCell: UITableViewCell {
         self.containerView.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMinXMinYCorner]
         
         self.playerPictureImageView.layer.cornerRadius = 8
-        self.playerPictureImageView.kf.setImage(with: URL(string: "https://media.istockphoto.com/vectors/man-avatar-profile-male-face-silhouette-or-icon-isolated-on-white-vector-id1142192548?k=20&m=1142192548&s=612x612&w=0&h=cJkeszGQom2gYCSRlJO9e5yis2NlHBrzu2B9Zr9B6TI="))
+        self.playerPictureImageView.kf.setImage(with: URL(string: "https://media.istockphoto.com/vectors/man-avatar-profile-male-face-silhouette-or-icon-isolated-on-white-vector-id1142192548?k=20&m=1142192548&s=612x612&w=0&h=cJkeszGQom2gYCSRlJO9e5yis2NlHBrzu2B9Zr9B6TI=")) // Default image in case of null image url
         
         self.nicknameLabel.font = .roboto(type: .bold, size: 14)
         self.realNameLabel.font = .roboto(type: .regular, size: 12)
         
-        self.nicknameLabel.text = "Unknown"
-        self.realNameLabel.text = "Unknown"
+        self.nicknameLabel.text = "Unknown" // Default nickname in case of unknown nickname
+        self.realNameLabel.text = "Unknown" // Default name in case of unknown first name/last name
     }
     
     func setupCell(team: Teams, index: Int) {
