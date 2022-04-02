@@ -27,9 +27,9 @@ class MainCoordinator: NavigationCoordinator {
         self.rootViewController.viewControllers = [matchesViewController]
     }
     
-    func goToDetails(teams: [Teams], leagueName: String, time: String) {
-        let matchesDetailsViewController = MatchesDetailsViewController(teams: teams, leagueName: leagueName, time: time)
-        let matchesDetailsViewModel: MatchesDetailsViewModel = DefaultMatchesDetailsViewModel(coordinator: self)
+    func goToDetails(match: Matches) {
+        let matchesDetailsViewController = MatchesDetailsViewController()
+        let matchesDetailsViewModel: MatchesDetailsViewModel = DefaultMatchesDetailsViewModel(coordinator: self, match: match)
         matchesDetailsViewController.bind(to: matchesDetailsViewModel)
         matchesDetailsViewController.modalPresentationStyle = .fullScreen
         self.rootViewController.pushViewController(matchesDetailsViewController, animated: true)

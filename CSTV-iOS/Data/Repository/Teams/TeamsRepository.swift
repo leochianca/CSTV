@@ -17,5 +17,5 @@ protocol TeamsRepository {
     var teams: Observable<[Teams]> { get }
     var state: Observable<TeamsRepositoryState> { get }
     
-    func getTeams()
+    func getTeams(match: Matches)
 }

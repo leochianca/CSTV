@@ -29,6 +29,7 @@ class DefaultMatchesRepository: MatchesRepository {
         self.dataSource.getRunningMatches { [weak self] result in
             switch result {
             case .success(let runningMatches):
+                // Filtering only matches that have the opponents object with 2 opponents (some of the matches object in the API have empty opponents object)120
                 var runningMatchesFiltered: [Matches] = []
                 for match in runningMatches {
                     if match.opponents.count == 2 {
@@ -51,6 +52,7 @@ class DefaultMatchesRepository: MatchesRepository {
         self.dataSource.getUpcomingMatches(page: self.page) { [weak self] result in
             switch result {
             case .success(let upComingMatches):
+                // Filtering only matches that have the opponents object with 2 opponents (some of the matches object in the API have empty opponents object)
                 var upComingMatchesFiltered: [Matches] = []
                 for match in upComingMatches {
                     if match.opponents.count == 2 {

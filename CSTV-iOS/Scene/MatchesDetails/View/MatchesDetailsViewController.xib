@@ -9,13 +9,16 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MatchesDetailsViewController" customModule="CSTV_iOS" customModuleProvider="target">
             <connections>
+                <outlet property="activityIndicator" destination="mzr-XG-kfl" id="e89-Qx-p1l"/>
                 <outlet property="firstTeamImageView" destination="5h2-7Q-i1K" id="J0I-rs-BC5"/>
                 <outlet property="firstTeamNameLabel" destination="Jza-hx-WK7" id="Y5S-vO-bMM"/>
                 <outlet property="firstTeamTableView" destination="oqh-M4-4AC" id="UF1-ps-IHg"/>
+                <outlet property="imagesStackView" destination="ZBP-qg-4ds" id="cQ0-da-QXQ"/>
                 <outlet property="leagueNameLabel" destination="koM-kt-ZNZ" id="d5w-b7-jsX"/>
                 <outlet property="secondTeamImageView" destination="pD6-BV-UIi" id="04W-e4-NGM"/>
                 <outlet property="secondTeamNameLabel" destination="i0R-Ne-TU4" id="VtA-zE-sZG"/>
                 <outlet property="secondTeamTableView" destination="S0a-J9-gfV" id="2x6-Rg-hKm"/>
+                <outlet property="teamsNameStackView" destination="TZn-ko-Y36" id="fFI-j9-Ihh"/>
                 <outlet property="timeLabel" destination="oac-OL-50Y" id="GWL-ZC-ArP"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="vsLabel" destination="MZR-cj-b6H" id="9CG-JR-flm"/>
@@ -44,7 +47,7 @@
                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="ZBP-qg-4ds">
+                <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="ZBP-qg-4ds">
                     <rect key="frame" x="120.5" y="97.5" width="173" height="60"/>
                     <subviews>
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5h2-7Q-i1K">
@@ -75,7 +78,7 @@
                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="173" id="UiS-KS-Dck"/>
                     </constraints>
                 </stackView>
-                <stackView opaque="NO" contentMode="scaleToFill" spacing="28" translatesAutoresizingMaskIntoConstraints="NO" id="TZn-ko-Y36">
+                <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" spacing="28" translatesAutoresizingMaskIntoConstraints="NO" id="TZn-ko-Y36">
                     <rect key="frame" x="108" y="167.5" width="198" height="12"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time 1" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jza-hx-WK7">
@@ -92,7 +95,7 @@
                         </label>
                     </subviews>
                 </stackView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hoje, 21:00" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oac-OL-50Y">
+                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hoje, 21:00" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oac-OL-50Y">
                     <rect key="frame" x="20" y="199.5" width="374" height="14.5"/>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -106,6 +109,14 @@
                     <rect key="frame" x="213.5" y="235" width="200.5" height="627"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </tableView>
+                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="mzr-XG-kfl">
+                    <rect key="frame" x="182" y="428" width="50" height="50"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="8jL-5f-GZZ"/>
+                        <constraint firstAttribute="width" constant="50" id="MvC-og-HgX"/>
+                    </constraints>
+                    <color key="color" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </activityIndicatorView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" red="0.1450980392" green="0.1450980392" blue="0.1450980392" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -118,9 +129,11 @@
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="TZn-ko-Y36" secondAttribute="trailing" constant="108" id="HwM-pj-yqe"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="oqh-M4-4AC" secondAttribute="trailing" constant="213.5" id="KJX-4p-Ysk"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="S0a-J9-gfV" secondAttribute="bottom" id="Kvc-Dh-Vyl"/>
+                <constraint firstItem="mzr-XG-kfl" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="NAj-ac-bTI"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="oac-OL-50Y" secondAttribute="trailing" constant="20" id="Nqz-d5-60p"/>
                 <constraint firstItem="ZBP-qg-4ds" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="Okz-Ht-dUq"/>
                 <constraint firstItem="ZBP-qg-4ds" firstAttribute="top" secondItem="koM-kt-ZNZ" secondAttribute="bottom" constant="24" id="SRe-s2-3kq"/>
+                <constraint firstItem="mzr-XG-kfl" firstAttribute="centerY" secondItem="fnl-2z-Ty3" secondAttribute="centerY" id="TVi-6h-Oud"/>
                 <constraint firstItem="i0R-Ne-TU4" firstAttribute="centerX" secondItem="pD6-BV-UIi" secondAttribute="centerX" id="VRb-7j-Z2K"/>
                 <constraint firstItem="oqh-M4-4AC" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Vfq-pi-hXy"/>
                 <constraint firstItem="S0a-J9-gfV" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="213.5" id="Yc9-qo-2pf"/>
@@ -134,7 +147,7 @@
                 <constraint firstItem="VYb-eq-tRn" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="52" id="rdu-Hd-t5x"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="oqh-M4-4AC" secondAttribute="bottom" id="wTu-sc-2Io"/>
             </constraints>
-            <point key="canvasLocation" x="270" y="-181"/>
+            <point key="canvasLocation" x="283" y="-66"/>
         </view>
     </objects>
     <resources>

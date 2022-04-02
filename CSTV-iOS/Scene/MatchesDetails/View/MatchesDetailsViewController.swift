@@ -17,31 +17,30 @@ class MatchesDetailsViewController: UIViewController, ViewModelBindable {
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var firstTeamTableView: UITableView!
     @IBOutlet weak var secondTeamTableView: UITableView!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var imagesStackView: UIStackView!
+    @IBOutlet weak var teamsNameStackView: UIStackView!
     
     var viewModel: MatchesDetailsViewModel?
-    var teams: [Teams] = []
-    var leagueName: String = ""
-    var time: String = ""
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupTableView()
         self.setupElements()
     }
     
-    init(teams: [Teams], leagueName: String, time: String) {
-        super.init(nibName: nil, bundle: nil)
-        self.teams = teams
-        self.leagueName = leagueName
-        self.time = time
+    func bindViewModel() {
+        self.viewModel?.teams.addAndNotify(observer: self, observerBlock: { [weak self] teams in
+            self?.firstTeamTableView.reloadData()
+            self?.firstTeamTableView.refreshControl?.endRefreshing()
+            
+            self?.secondTeamTableView.reloadData()
+            self?.secondTeamTableView.refreshControl?.endRefreshing()
+        })
+        self.viewModel?.finishLoading.addAndNotify(observer: self, observerBlock: { [weak self] stop in
+            self?.stopAnimating(stop: stop)
+        })
     }
-    
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    func bindViewModel() {}
     
     func setupTableView() {
         self.firstTeamTableView.register(UINib(nibName: "FirstTeamTableViewCell", bundle: nil), forCellReuseIdentifier: "firstTeamCell")
@@ -54,54 +53,81 @@ class MatchesDetailsViewController: UIViewController, ViewModelBindable {
     }
     
     func setupElements() {
-        if let imageUrl = self.teams[0].imageUrl {
-            self.firstTeamImageView.kf.setImage(with: imageUrl)
+        self.setupFont()
+        guard let match = self.viewModel?.match.value else { return }
+        
+        if match.status == "running" {
+            self.timeLabel.text = "AGORA"
         } else {
-            self.firstTeamImageView.image = UIImage(named: "noteam")
+            guard let matchDate = match.date else { return }
+            let time = DateFormatter.dateString(initialDate: Date(), endDate: matchDate)
+            self.timeLabel.text = time
         }
         
-        if let imageUrl = self.teams[1].imageUrl {
-            self.secondTeamImageView.kf.setImage(with: imageUrl)
-        } else {
-            self.secondTeamImageView.image = UIImage(named: "noteam")
-        }
-        
+        self.leagueNameLabel.text = match.league.name
+    }
+    
+    func setupFont() {
         self.vsLabel.font = .roboto(type: .regular, size: 12)
         self.timeLabel.font = .roboto(type: .bold, size: 12)
         self.leagueNameLabel.font = .roboto(type: .medium, size: 18)
         self.firstTeamNameLabel.font = .roboto(type: .regular, size: 10)
         self.secondTeamNameLabel.font = .roboto(type: .regular, size: 10)
+    }
+    
+    func setupTeamsInfo() {
+        guard let teams = self.viewModel?.teams.value else { return }
+        if let imageUrl = teams[0].imageUrl {
+            self.firstTeamImageView.kf.setImage(with: imageUrl)
+        } else {
+            self.firstTeamImageView.image = UIImage(named: "noteam")
+        }
         
-        self.leagueNameLabel.text = self.leagueName
-        self.firstTeamNameLabel.text = self.teams[0].name
-        self.secondTeamNameLabel.text = self.teams[1].name
-        self.timeLabel.text = self.time
+        if let imageUrl = teams[1].imageUrl {
+            self.secondTeamImageView.kf.setImage(with: imageUrl)
+        } else {
+            self.secondTeamImageView.image = UIImage(named: "noteam")
+        }
+        
+        self.firstTeamNameLabel.text = teams[0].name
+        self.secondTeamNameLabel.text = teams[1].name
+        
+        self.imagesStackView.isHidden = false
+        self.teamsNameStackView.isHidden = false
+        self.timeLabel.isHidden = false
+    }
+    
+    func stopAnimating(stop: Bool) {
+        if stop {
+            self.setupTeamsInfo()
+            self.activityIndicator.stopAnimating()
+        }
     }
     
     @IBAction func backButtonTapped(_ sender: Any) {
         self.viewModel?.goBack()
     }
-    
-    var index1: Int = 0
-    var index2: Int = 0
 }
 
 extension MatchesDetailsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        guard let teams = self.viewModel?.teams.value else { return 0 }
+        if teams.count == 2 {
+            return 5
+        }
+        return 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let teams = self.viewModel?.teams.value else { return UITableViewCell() }
         if tableView == self.firstTeamTableView, let cell = tableView.dequeueReusableCell(withIdentifier: "firstTeamCell", for: indexPath) as? FirstTeamTableViewCell {
-            if self.teams[0].players.count >= self.index1+1 {
-                cell.setupCell(team: self.teams[0], index: self.index1)
-                self.index1 += 1
+            if teams[0].players.count >= indexPath.row {
+                cell.setupCell(team: teams[0], index: indexPath.row)
             }
             return cell
         } else if let cell = tableView.dequeueReusableCell(withIdentifier: "secondTeamCell", for: indexPath) as? SecondTeamTableViewCell {
-            if self.teams[1].players.count >= self.index2+1 {
-                cell.setupCell(team: self.teams[1], index: self.index2)
-                self.index2 += 1
+            if teams[1].players.count >= indexPath.row {
+                cell.setupCell(team: teams[1], index: indexPath.row)
             }
             return cell
         }
