@@ -65,9 +65,14 @@ class MatchesTableViewCell: UITableViewCell {
         let secondTeam = match.opponents[1].opponent
         
         self.leagueNameLabel.text = match.league.name
-        self.leagueImageView.kf.setImage(with: match.league.imageUrl)
         self.firstTeamNameLabel.text = firstTeam.name
         self.secondTeamNameLabel.text = secondTeam.name
+        
+        if let imageUrl = match.league.imageUrl {
+            self.leagueImageView.kf.setImage(with: imageUrl)
+        } else {
+            self.leagueImageView.image = UIImage(named: "noteam")
+        }
         
         if let imageUrl = firstTeam.imageUrl {
             self.firstTeamImageView.kf.setImage(with: imageUrl)

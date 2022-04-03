@@ -20,6 +20,8 @@ class MatchesDetailsViewController: UIViewController, ViewModelBindable {
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var imagesStackView: UIStackView!
     @IBOutlet weak var teamsNameStackView: UIStackView!
+    @IBOutlet weak var firstTableViewTrailing: NSLayoutConstraint!
+    @IBOutlet weak var secondTableViewLeading: NSLayoutConstraint!
     
     var viewModel: MatchesDetailsViewModel?
     var firstCellIndex: Int = 0
@@ -45,13 +47,17 @@ class MatchesDetailsViewController: UIViewController, ViewModelBindable {
     }
     
     func setupTableView() {
+        let screenWidth = UIScreen.main.bounds.size.width
+        
         self.firstTeamTableView.register(UINib(nibName: "FirstTeamTableViewCell", bundle: nil), forCellReuseIdentifier: "firstTeamCell")
         self.firstTeamTableView.delegate = self
         self.firstTeamTableView.dataSource = self
+        self.firstTableViewTrailing.constant = screenWidth / 2
         
         self.secondTeamTableView.register(UINib(nibName: "SecondTeamTableViewCell", bundle: nil), forCellReuseIdentifier: "secondTeamCell")
         self.secondTeamTableView.delegate = self
         self.secondTeamTableView.dataSource = self
+        self.secondTableViewLeading.constant = screenWidth / 2
     }
     
     func setupElements() {

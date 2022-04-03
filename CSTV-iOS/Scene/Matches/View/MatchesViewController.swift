@@ -27,7 +27,7 @@ class MatchesViewController: UIViewController, ViewModelBindable {
             self?.tableView.refreshControl?.endRefreshing()
         })
         self.viewModel?.finishLoading.addAndNotify(observer: self, observerBlock: { [weak self] stop in
-            self?.stopLoading(stop: stop)
+            self?.stopAnimating(stop: stop)
         })
     }
     
@@ -41,7 +41,7 @@ class MatchesViewController: UIViewController, ViewModelBindable {
         self.matchesLabel.font = .roboto(type: .medium, size: 32)
     }
     
-    func stopLoading(stop: Bool) {
+    func stopAnimating(stop: Bool) {
         if stop {
             self.activityIndicator.stopAnimating()
         }

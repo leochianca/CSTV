@@ -40,7 +40,7 @@
                                 </constraints>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="aK0-6a-6eV">
-                                <rect key="frame" x="69.5" y="33" width="173" height="60"/>
+                                <rect key="frame" x="69" y="33" width="174" height="60"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="FPd-Bm-TzK">
                                         <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
@@ -59,7 +59,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="SDP-X5-TcB">
-                                        <rect key="frame" x="113" y="0.0" width="60" height="60"/>
+                                        <rect key="frame" x="114" y="0.0" width="60" height="60"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="60" id="EzL-cO-FD4"/>
                                             <constraint firstAttribute="width" constant="60" id="XoX-k7-IbI"/>
@@ -74,7 +74,7 @@
                                 <rect key="frame" x="83" y="103" width="145" height="12"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time 1" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XDJ-t1-wPH">
-                                        <rect key="frame" x="0.0" y="0.0" width="33" height="12"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="32" height="12"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -127,6 +127,7 @@
                             <constraint firstItem="aK0-6a-6eV" firstAttribute="centerX" secondItem="YpJ-Hy-Tmf" secondAttribute="centerX" id="DAJ-Vx-PkT"/>
                             <constraint firstItem="GoH-Te-32O" firstAttribute="top" secondItem="YpJ-Hy-Tmf" secondAttribute="top" id="Eso-lB-0KC"/>
                             <constraint firstItem="XDJ-t1-wPH" firstAttribute="centerX" secondItem="FPd-Bm-TzK" secondAttribute="centerX" id="O3I-it-Hmm"/>
+                            <constraint firstItem="VDr-7f-mhf" firstAttribute="centerX" secondItem="Xd3-cp-se2" secondAttribute="centerX" id="SLh-r7-WYQ"/>
                             <constraint firstItem="JJ8-3i-loc" firstAttribute="leading" secondItem="YpJ-Hy-Tmf" secondAttribute="leading" constant="15" id="XnD-5m-gII"/>
                             <constraint firstItem="VDr-7f-mhf" firstAttribute="top" secondItem="aK0-6a-6eV" secondAttribute="bottom" constant="10" id="dxp-ks-F3b"/>
                             <constraint firstAttribute="trailing" relation="lessThanOrEqual" secondItem="JJ8-3i-loc" secondAttribute="trailing" constant="221" id="gxZ-0p-4bM"/>
