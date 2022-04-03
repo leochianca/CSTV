@@ -11,6 +11,7 @@ class DefaultMatchesRepository: MatchesRepository {
     private let dataSource: MatchesDataSource
     private let totalPages: Int = 20 // Arbitrary max number of matches pages (API doesn't specify)
     private var page: Int = 0
+    private var matchesFiltered: [Matches] = []
     let matches: Observable<[Matches]> = .init([])
     let state: Observable<MatchesRepositoryState> = .init(.idle)
     
@@ -21,6 +22,7 @@ class DefaultMatchesRepository: MatchesRepository {
     func refresh() {
         self.page = 0
         self.matches.value.removeAll()
+        self.matchesFiltered.removeAll()
         self.getRunningMatches()
         self.getUpcomingMatches()
     }
@@ -30,13 +32,11 @@ class DefaultMatchesRepository: MatchesRepository {
             switch result {
             case .success(let runningMatches):
                 // Filtering only matches that have the opponents object with 2 opponents (some of the matches object in the API have empty opponents object)120
-                var runningMatchesFiltered: [Matches] = []
                 for match in runningMatches {
                     if match.opponents.count == 2 {
-                        runningMatchesFiltered.append(match)
+                        self?.matchesFiltered.append(match)
                     }
                 }
-                self?.matches.value = runningMatchesFiltered
             case .failure(let error):
                 self?.state.value = .error(.generic(errorMessage: error.message))
             }
@@ -50,19 +50,20 @@ class DefaultMatchesRepository: MatchesRepository {
         self.page += 1
         
         self.dataSource.getUpcomingMatches(page: self.page) { [weak self] result in
+            guard let self = self else { return }
             switch result {
             case .success(let upComingMatches):
                 // Filtering only matches that have the opponents object with 2 opponents (some of the matches object in the API have empty opponents object)
-                var upComingMatchesFiltered: [Matches] = []
                 for match in upComingMatches {
                     if match.opponents.count == 2 {
-                        upComingMatchesFiltered.append(match)
+                        self.matchesFiltered.append(match)
                     }
                 }
-                self?.matches.value.append(contentsOf: upComingMatchesFiltered)
-                self?.state.value = .loaded
+                self.matches.value.append(contentsOf: self.matchesFiltered)
+                self.matchesFiltered.removeAll()
+                self.state.value = .loaded
             case .failure(let error):
-                self?.state.value = .error(.generic(errorMessage: error.message))
+                self.state.value = .error(.generic(errorMessage: error.message))
             }
         }
     }
