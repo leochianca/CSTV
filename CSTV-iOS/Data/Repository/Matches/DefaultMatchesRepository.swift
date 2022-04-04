@@ -60,6 +60,7 @@ class DefaultMatchesRepository: MatchesRepository {
                     }
                 }
                 self.matches.value.append(contentsOf: self.matchesFiltered)
+                self.matches.value.sort { $0.status > $1.status }
                 self.matchesFiltered.removeAll()
                 self.state.value = .loaded
             case .failure(let error):
