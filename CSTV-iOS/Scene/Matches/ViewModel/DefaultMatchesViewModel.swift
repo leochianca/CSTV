@@ -14,7 +14,7 @@ class DefaultMatchesViewModel: MatchesViewModel {
     
     weak var coordinator: MainCoordinator?
     
-    init(coordinator: MainCoordinator, matchesRepository: MatchesRepository = DefaultMatchesRepository(), teamsRepository: TeamsRepository = DefaultTeamsRepository()) {
+    init(coordinator: MainCoordinator, matchesRepository: MatchesRepository = DefaultMatchesRepository()) {
         self.coordinator = coordinator
         self.matchesRepository = matchesRepository
         self.bind(to: matchesRepository)
